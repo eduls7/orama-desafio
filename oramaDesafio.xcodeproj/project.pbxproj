@@ -3,27 +3,33 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FF486D50803294D218F7B6A /* Pods_oramaDesafio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFB73AA0360B1A1B0944258 /* Pods_oramaDesafio.framework */; };
 		F934FC3124FDC2EF00D78C35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934FC3024FDC2EF00D78C35 /* AppDelegate.swift */; };
 		F934FC3324FDC2EF00D78C35 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934FC3224FDC2EF00D78C35 /* SceneDelegate.swift */; };
 		F934FC3524FDC2EF00D78C35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934FC3424FDC2EF00D78C35 /* ViewController.swift */; };
-		F934FC3824FDC2EF00D78C35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F934FC3624FDC2EF00D78C35 /* Main.storyboard */; };
 		F934FC3A24FDC2F900D78C35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F934FC3924FDC2F900D78C35 /* Assets.xcassets */; };
-		F934FC3D24FDC2F900D78C35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F934FC3B24FDC2F900D78C35 /* LaunchScreen.storyboard */; };
+		F98A912724FEC1F30045EC4F /* Fundos.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A912624FEC1F30045EC4F /* Fundos.swift */; };
+		F98A912B24FEC2A70045EC4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F98A912A24FEC2A70045EC4F /* LaunchScreen.storyboard */; };
+		F98A912D24FED8810045EC4F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A912C24FED8810045EC4F /* Network.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1838B968FDE3E6ABA3F5C46E /* Pods-oramaDesafio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oramaDesafio.debug.xcconfig"; path = "Target Support Files/Pods-oramaDesafio/Pods-oramaDesafio.debug.xcconfig"; sourceTree = "<group>"; };
+		CE812F0E9CBBDA8336F5BFDC /* Pods-oramaDesafio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oramaDesafio.release.xcconfig"; path = "Target Support Files/Pods-oramaDesafio/Pods-oramaDesafio.release.xcconfig"; sourceTree = "<group>"; };
 		F934FC2D24FDC2EF00D78C35 /* oramaDesafio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = oramaDesafio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F934FC3024FDC2EF00D78C35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F934FC3224FDC2EF00D78C35 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F934FC3424FDC2EF00D78C35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F934FC3724FDC2EF00D78C35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F934FC3924FDC2F900D78C35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F934FC3C24FDC2F900D78C35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F934FC3E24FDC2F900D78C35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F98A912624FEC1F30045EC4F /* Fundos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fundos.swift; sourceTree = "<group>"; };
+		F98A912A24FEC2A70045EC4F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F98A912C24FED8810045EC4F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		FAFB73AA0360B1A1B0944258 /* Pods_oramaDesafio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_oramaDesafio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +37,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FF486D50803294D218F7B6A /* Pods_oramaDesafio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27386CD7CA01969A87D6DB46 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAFB73AA0360B1A1B0944258 /* Pods_oramaDesafio.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9806347C6ED84C52BAC58633 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1838B968FDE3E6ABA3F5C46E /* Pods-oramaDesafio.debug.xcconfig */,
+				CE812F0E9CBBDA8336F5BFDC /* Pods-oramaDesafio.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		F934FC2424FDC2EF00D78C35 = {
 			isa = PBXGroup;
 			children = (
 				F934FC2F24FDC2EF00D78C35 /* oramaDesafio */,
 				F934FC2E24FDC2EF00D78C35 /* Products */,
+				9806347C6ED84C52BAC58633 /* Pods */,
+				27386CD7CA01969A87D6DB46 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +84,30 @@
 			children = (
 				F934FC3024FDC2EF00D78C35 /* AppDelegate.swift */,
 				F934FC3224FDC2EF00D78C35 /* SceneDelegate.swift */,
-				F934FC3424FDC2EF00D78C35 /* ViewController.swift */,
-				F934FC3624FDC2EF00D78C35 /* Main.storyboard */,
+				F98A912924FEC2090045EC4F /* Model */,
+				F98A912524FEC1D60045EC4F /* Controller */,
 				F934FC3924FDC2F900D78C35 /* Assets.xcassets */,
-				F934FC3B24FDC2F900D78C35 /* LaunchScreen.storyboard */,
+				F98A912A24FEC2A70045EC4F /* LaunchScreen.storyboard */,
 				F934FC3E24FDC2F900D78C35 /* Info.plist */,
 			);
 			path = oramaDesafio;
+			sourceTree = "<group>";
+		};
+		F98A912524FEC1D60045EC4F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F934FC3424FDC2EF00D78C35 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F98A912924FEC2090045EC4F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F98A912624FEC1F30045EC4F /* Fundos.swift */,
+				F98A912C24FED8810045EC4F /* Network.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +117,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F934FC4124FDC2F900D78C35 /* Build configuration list for PBXNativeTarget "oramaDesafio" */;
 			buildPhases = (
+				C397F742AECFE661481DAFBC /* [CP] Check Pods Manifest.lock */,
 				F934FC2924FDC2EF00D78C35 /* Sources */,
 				F934FC2A24FDC2EF00D78C35 /* Frameworks */,
 				F934FC2B24FDC2EF00D78C35 /* Resources */,
+				E995DEF9C9472C829CFFC25D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,45 +170,69 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F934FC3D24FDC2F900D78C35 /* LaunchScreen.storyboard in Resources */,
+				F98A912B24FEC2A70045EC4F /* LaunchScreen.storyboard in Resources */,
 				F934FC3A24FDC2F900D78C35 /* Assets.xcassets in Resources */,
-				F934FC3824FDC2EF00D78C35 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C397F742AECFE661481DAFBC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-oramaDesafio-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E995DEF9C9472C829CFFC25D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-oramaDesafio/Pods-oramaDesafio-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-oramaDesafio/Pods-oramaDesafio-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-oramaDesafio/Pods-oramaDesafio-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F934FC2924FDC2EF00D78C35 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F98A912D24FED8810045EC4F /* Network.swift in Sources */,
 				F934FC3524FDC2EF00D78C35 /* ViewController.swift in Sources */,
 				F934FC3124FDC2EF00D78C35 /* AppDelegate.swift in Sources */,
+				F98A912724FEC1F30045EC4F /* Fundos.swift in Sources */,
 				F934FC3324FDC2EF00D78C35 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		F934FC3624FDC2EF00D78C35 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F934FC3724FDC2EF00D78C35 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F934FC3B24FDC2F900D78C35 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F934FC3C24FDC2F900D78C35 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F934FC3F24FDC2F900D78C35 /* Debug */ = {
@@ -216,7 +285,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +339,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -282,11 +351,13 @@
 		};
 		F934FC4224FDC2F900D78C35 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1838B968FDE3E6ABA3F5C46E /* Pods-oramaDesafio.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8NY9G9332F;
 				INFOPLIST_FILE = oramaDesafio/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,11 +371,13 @@
 		};
 		F934FC4324FDC2F900D78C35 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE812F0E9CBBDA8336F5BFDC /* Pods-oramaDesafio.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8NY9G9332F;
 				INFOPLIST_FILE = oramaDesafio/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
