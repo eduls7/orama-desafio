@@ -10,7 +10,7 @@ import Foundation
 
 
 struct Fundo: Codable {
-    let name: String
+    let simpleName: String
     let fullName: String
     let initialDate: String
     let operability: Operability
@@ -19,7 +19,7 @@ struct Fundo: Codable {
     let fundManager: FundManager
     
     enum CodingKeys: String, CodingKey {
-        case name = "simple_name"
+        case simpleName = "simple_name"
         case fullName = "full_name"
         case operability
         case specification
