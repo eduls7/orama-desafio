@@ -27,16 +27,20 @@ class FundoCollectionViewController: UIViewController  {
         return collectionView
     }()
     
-    lazy var historicoButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(title: "Histórico", style: .plain, target: self, action: #selector(buttonHistorico(button:)))
-        
 
-        return button
+    
+    lazy var historicoButton: UIBarButtonItem = {
+//        let button = UIButton()
+//        let image = UIImage(named: "icon-clock")
+//        button.setImage(image, for: .normal)
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.addTarget(self, action: #selector(buttonHistoricoAction(button:)), for: .touchUpInside)
+//        let buttonBar = UIBarButtonItem(customView: button)
+        let buttonBar = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(buttonHistoricoAction(button:)))
+        return buttonBar
     }()
     
-    @objc func buttonHistorico (button: UIButton) {
-        print("opa")
-    }
+   
     
     
     //MARK: - Initializers
@@ -47,7 +51,15 @@ class FundoCollectionViewController: UIViewController  {
         getFundos()
         
     }
-
+    
+    @objc func buttonHistoricoAction (button: UIButton) {
+        let historicoViewController = HistoricoViewController()
+        
+        historicoViewController.fundos = self.fundos
+        
+        navigationController?.pushViewController(historicoViewController, animated: true)
+    }
+    
 
 }
 
@@ -57,7 +69,7 @@ extension FundoCollectionViewController {
         network.fetchJSON { (fundosResponse) in
             for index in 0..<6 {
                 self.fundos.append(fundosResponse[index])
-                //print(self.fundos[index].operability.applicationMinimum)
+                //print(self.fundos[index].strategyVideo?.thumbnail)
                 self.setupUI()
             }
         }
@@ -74,7 +86,8 @@ extension FundoCollectionViewController {
         configNavigationBar()
         
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+                        
+            collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0),
             collectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0),
             collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0),
             collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
@@ -83,9 +96,13 @@ extension FundoCollectionViewController {
     
     func configNavigationBar () {
         if let navigationController = self.navigationController {
+            navigationController.navigationBar.tintColor = .white
+            let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+            navigationController.navigationBar.titleTextAttributes = textAttributes
             self.navigationItem.title = "Fundos"
             navigationController.navigationBar.barTintColor = UIColor(red: 9/255, green: 155/255, blue: 160/255, alpha: 1)
             self.navigationItem.rightBarButtonItem = historicoButton
+            //self.navigationItem.rightBarButtonItem?.tintColor = .white
         }
         
     }
@@ -129,9 +146,11 @@ extension FundoCollectionViewController: UICollectionViewDataSource, UICollectio
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailFundoViewController = DetailsFundoViewController()
         
+        let dateFormated = fundos[indexPath.row].initialDate.replacingOccurrences(of: "-", with: "/")
+        
         detailFundoViewController.simpleName.text = fundos[indexPath.row].simpleName
         detailFundoViewController.fullNameLabel.text = fundos[indexPath.row].fullName
-        detailFundoViewController.initialDataLabel.text = fundos[indexPath.row].initialDate
+        detailFundoViewController.initialDataLabel.text = dateFormated
         detailFundoViewController.descricaoFundoLabel.text = fundos[indexPath.row].fundManager.description
         
         navigationController?.pushViewController(detailFundoViewController, animated: true)

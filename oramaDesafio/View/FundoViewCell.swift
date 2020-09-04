@@ -12,18 +12,16 @@ class FundoViewCell: UICollectionViewCell {
     
     lazy var nameFundoLabel: UILabel = {
         let label = UILabel()
-        //label.lineBreakMode = .byTruncatingMiddle
         label.textAlignment = .center
-        label.textColor = .systemGreen
+        label.textColor = UIColor(red: 9/255, green: 155/255, blue: 160/255, alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
-        //label.sizeToFit()
         label.numberOfLines = 3
         return label
     }()
     
     lazy var leftColorFundoView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGreen
+        view.backgroundColor = UIColor(red: 9/255, green: 155/255, blue: 160/255, alpha: 1)
         view.layer.cornerRadius = 10
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -33,7 +31,7 @@ class FundoViewCell: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
-        //label.sizeToFit()
+
         label.numberOfLines = 2
         return label
     }()
@@ -41,7 +39,6 @@ class FundoViewCell: UICollectionViewCell {
     lazy var nameFundoRiskLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        //label.sizeToFit()
         label.numberOfLines = 1
         return label
     }()
@@ -51,7 +48,7 @@ class FundoViewCell: UICollectionViewCell {
         view.layer.cornerRadius = 10
         view.backgroundColor = .white
         view.layer.borderColor = UIColor.systemGray.cgColor
-        view.layer.borderWidth = 1
+        view.layer.borderWidth = 0.5
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

@@ -17,6 +17,8 @@
 		F98A912D24FED8810045EC4F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A912C24FED8810045EC4F /* Network.swift */; };
 		F98A912F24FF125A0045EC4F /* DetailsFundoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A912E24FF125A0045EC4F /* DetailsFundoViewController.swift */; };
 		F98A913124FF18190045EC4F /* FundoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A913024FF18180045EC4F /* FundoViewCell.swift */; };
+		F98A91372501BC810045EC4F /* HistoricoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A91362501BC810045EC4F /* HistoricoViewCell.swift */; };
+		F98A91392501BCDB0045EC4F /* HistoricoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A91382501BCDB0045EC4F /* HistoricoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		F98A912C24FED8810045EC4F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		F98A912E24FF125A0045EC4F /* DetailsFundoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsFundoViewController.swift; sourceTree = "<group>"; };
 		F98A913024FF18180045EC4F /* FundoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundoViewCell.swift; sourceTree = "<group>"; };
+		F98A91362501BC810045EC4F /* HistoricoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricoViewCell.swift; sourceTree = "<group>"; };
+		F98A91382501BCDB0045EC4F /* HistoricoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricoViewController.swift; sourceTree = "<group>"; };
 		FAFB73AA0360B1A1B0944258 /* Pods_oramaDesafio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_oramaDesafio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -103,6 +107,7 @@
 			children = (
 				F934FC3424FDC2EF00D78C35 /* FundoCollectionViewController.swift */,
 				F98A912E24FF125A0045EC4F /* DetailsFundoViewController.swift */,
+				F98A91382501BCDB0045EC4F /* HistoricoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				F98A913024FF18180045EC4F /* FundoViewCell.swift */,
+				F98A91362501BC810045EC4F /* HistoricoViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -240,6 +246,8 @@
 			files = (
 				F98A913124FF18190045EC4F /* FundoViewCell.swift in Sources */,
 				F98A912D24FED8810045EC4F /* Network.swift in Sources */,
+				F98A91372501BC810045EC4F /* HistoricoViewCell.swift in Sources */,
+				F98A91392501BCDB0045EC4F /* HistoricoViewController.swift in Sources */,
 				F934FC3524FDC2EF00D78C35 /* FundoCollectionViewController.swift in Sources */,
 				F98A912F24FF125A0045EC4F /* DetailsFundoViewController.swift in Sources */,
 				F934FC3124FDC2EF00D78C35 /* AppDelegate.swift in Sources */,
