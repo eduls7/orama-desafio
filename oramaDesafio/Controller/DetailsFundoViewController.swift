@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import RealmSwift
+
+protocol FundoInsertDataBase: class {
+    func updateStatusHistoricoButton () -> Void
+}
 
 class DetailsFundoViewController: UIViewController {
     
@@ -30,7 +35,6 @@ class DetailsFundoViewController: UIViewController {
     lazy var simpleName: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
-        //label.font = UIFont.boldSystemFont(ofSize: 20)
         label.numberOfLines = 0
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -115,6 +119,9 @@ class DetailsFundoViewController: UIViewController {
     lazy var imageThumbnail: UIImageView = {
         let imageView = UIImageView()
         
+        imageView.contentMode = UIView.ContentMode.scaleToFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
         return imageView
     }()
     
@@ -123,20 +130,65 @@ class DetailsFundoViewController: UIViewController {
         button.setTitle("Comprar Fundo", for: .normal)
         button.layer.cornerRadius = 10
         button.backgroundColor = UIColor(red: 9/255, green: 155/255, blue: 160/255, alpha: 1)
+        
         button.addTarget(self, action: #selector(buyButtonAction(button:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-        
+    
+    //MARK: - PROPERTIES
+    var isThumbnailActive = false
+    var fundo: Fundo?
+    let network = Network()
+    var delegate: FundoInsertDataBase?
+    let database = Database()
+    
+    
     //MARK: - INITIALIZERS
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
-        // Do any additional setup after loading the view.
+        
+        loadFundo()
+        
+        if isThumbnailActive {
+            setupUIWithThumbnail()
+        } else{
+            setupUI()
+        }
+        
     }
     
     @objc func buyButtonAction (button: UIButton) {
-        print("opa")
+        guard let fundo = fundo else { return }
+    
+        let isSaved = database.saveFundo(fundo)
+        
+        if isSaved {
+            let alert = UIAlertController(title: "Fundo comprado com sucesso", message: nil, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { (action) in
+                self.navigationController?.popViewController(animated: true)
+            }))
+            self.present(alert, animated: true)
+        } else {
+            let alert = UIAlertController(title: "\(fundo.simpleName)", message: "Este fundo já foi comprado", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func loadFundo () {
+        guard let fundo = fundo else { return }
+        
+        self.simpleName.text = fundo.simpleName
+        self.fullNameLabel.text = fundo.fullName
+        self.descricaoFundoLabel.text = fundo.fundManager.description
+        let dateFormated = fundo.initialDate.replacingOccurrences(of: "-", with: "/")
+        self.initialDataLabel.text = dateFormated
+        
+        if let imageURL = fundo.strategyVideo?.thumbnail  {
+            network.getImage(url: imageURL, imageThumbnail: imageThumbnail)
+            isThumbnailActive = true
+        }
     }
 }
 
@@ -204,9 +256,82 @@ extension DetailsFundoViewController {
             initialDataLabel.topAnchor.constraint(equalTo: dateViewLabel.bottomAnchor, constant: 20),
             initialDataLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             initialDataLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            //initialDataLabel.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: 20),
             
             buyButton.topAnchor.constraint(equalTo: initialDataLabel.bottomAnchor, constant: 20),
+            buyButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            buyButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            buyButton.heightAnchor.constraint(equalToConstant: 40),
+            buyButton.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: 20),
+        ])
+    }
+    
+    func setupUIWithThumbnail() {
+        self.view.backgroundColor = .white
+        self.navigationItem.title = "Fundo"
+        self.view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(simpleName)
+        contentView.addSubview(dadosFundoViewLabel)
+        contentView.addSubview(nameViewLabel)
+        contentView.addSubview(fullNameLabel)
+        contentView.addSubview(descricaoViewLabel)
+        contentView.addSubview(descricaoFundoLabel)
+        contentView.addSubview(dateViewLabel)
+        contentView.addSubview(initialDataLabel)
+        contentView.addSubview(imageThumbnail)
+        contentView.addSubview(buyButton)
+        
+        NSLayoutConstraint.activate([
+            
+            scrollView.widthAnchor.constraint(equalTo: self.view.widthAnchor),
+            scrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            
+            simpleName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            simpleName.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 10),
+            simpleName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            dadosFundoViewLabel.topAnchor.constraint(equalTo: simpleName.bottomAnchor, constant: 50),
+            dadosFundoViewLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            dadosFundoViewLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            
+            nameViewLabel.topAnchor.constraint(equalTo: dadosFundoViewLabel.bottomAnchor, constant: 20),
+            nameViewLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            nameViewLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            fullNameLabel.topAnchor.constraint(equalTo: nameViewLabel.bottomAnchor, constant: 20),
+            fullNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            fullNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            descricaoViewLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 20),
+            descricaoViewLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            descricaoViewLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            
+            descricaoFundoLabel.topAnchor.constraint(equalTo: descricaoViewLabel.bottomAnchor, constant: 20),
+            descricaoFundoLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            descricaoFundoLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            
+            dateViewLabel.topAnchor.constraint(equalTo: descricaoFundoLabel.bottomAnchor, constant: 20),
+            dateViewLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            dateViewLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            
+            initialDataLabel.topAnchor.constraint(equalTo: dateViewLabel.bottomAnchor, constant: 20),
+            initialDataLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            initialDataLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            imageThumbnail.topAnchor.constraint(equalTo: initialDataLabel.bottomAnchor, constant: 20),
+            imageThumbnail.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            imageThumbnail.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            
+            buyButton.topAnchor.constraint(equalTo: imageThumbnail.bottomAnchor, constant: 20),
             buyButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             buyButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             buyButton.heightAnchor.constraint(equalToConstant: 40),

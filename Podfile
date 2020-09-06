@@ -7,5 +7,7 @@ target 'oramaDesafio' do
 
   # Pods for oramaDesafio
   pod 'Alamofire', '~> 5.2'
+  pod 'AlamofireImage', '~> 4.1'
+  pod 'RealmSwift'
 
 end

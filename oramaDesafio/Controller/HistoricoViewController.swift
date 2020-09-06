@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class HistoricoViewController: UIViewController {
     
@@ -23,28 +24,65 @@ class HistoricoViewController: UIViewController {
     }()
     
     //MARK: - Properties
-    var fundos: [Fundo] = []
+    let database = Database()
+    lazy var fundosDB = database.getFundos()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+     
     }
     
+    func setupColorCells (risk: String, view: UIView) {
+        switch risk {
+            case "2":
+                view.backgroundColor =
+                    UIColor(red: 101/255, green: 241/255, blue: 222/255, alpha: 1)
+                break
+            case "3":
+                view.backgroundColor =
+                UIColor(red: 143/255, green: 237/255, blue: 109/255, alpha: 1)
+                break
+            case "4":
+                view.backgroundColor =
+                UIColor(red: 175/255, green: 244/255, blue: 44/255, alpha: 1)
+                break
+            case "8":
+                view.backgroundColor =
+                UIColor(red: 253/255, green: 187/255, blue: 6/255, alpha: 1)
+                break
+            case "11":
+                view.backgroundColor =
+                UIColor(red: 252/255, green: 5/255, blue: 0/255, alpha: 1)
+                break
+            default:
+                print("Nada")
+                break
+        }
+    }
+    
+
 }
 
 extension HistoricoViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return fundos.count
+        return fundosDB.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HistoricoViewCell", for: indexPath) as! HistoricoViewCell
         
-        cell.nameFundoLabel.text = fundos[indexPath.row].simpleName
-        cell.nameFundoRiskLabel.text = fundos[indexPath.row].specification.fundRisk.name
-        let aplicacaoMinimaFormated = fundos[indexPath.row].operability.applicationMinimum.replacingOccurrences(of: ".", with: ",")
+        
+        cell.nameFundoLabel.text = fundosDB[indexPath.row].simpleName
+        cell.nameFundoRiskLabel.text = fundosDB[indexPath.row].risk
+        let aplicacaoMinimaFormated = fundosDB[indexPath.row].applicationMinimum.replacingOccurrences(of: ".", with: ",")
         cell.aplicacaoMinimaLabel.text = "R$ \(aplicacaoMinimaFormated)"
+        let risk = fundosDB[indexPath.row].risk
+        let str = risk.westernArabicNumeralsOnly
+        
+        setupColorCells(risk: str, view: cell.bottomColorFundoView)
+        
         
         return cell
     }
@@ -63,8 +101,8 @@ extension HistoricoViewController {
         NSLayoutConstraint.activate([
                         
             collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0),
-            collectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20),
-            collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -20),
+            collectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 15),
+            collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -15),
             collectionView.heightAnchor.constraint(equalToConstant: 220)
             
         ])

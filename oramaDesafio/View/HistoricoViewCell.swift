@@ -20,7 +20,6 @@ class HistoricoViewCell: UICollectionViewCell {
     
     lazy var bottomColorFundoView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 9/255, green: 155/255, blue: 160/255, alpha: 1)
         view.layer.cornerRadius = 10
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -67,7 +66,11 @@ class HistoricoViewCell: UICollectionViewCell {
         view.layer.cornerRadius = 10
         view.backgroundColor = .white
         view.layer.borderColor = UIColor.systemGray.cgColor
-        view.layer.borderWidth = 0.5
+        view.layer.borderWidth = 0.2
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.18
+        view.layer.shadowOffset = .zero
+        view.layer.shadowRadius = 10
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -101,7 +104,7 @@ extension HistoricoViewCell {
 
             bottomColorFundoView.leadingAnchor.constraint(equalTo: cellView.leadingAnchor),
             bottomColorFundoView.trailingAnchor.constraint(equalTo: cellView.trailingAnchor),
-            bottomColorFundoView.heightAnchor.constraint(equalToConstant: 10),
+            bottomColorFundoView.heightAnchor.constraint(equalToConstant: 7),
             bottomColorFundoView.bottomAnchor.constraint(equalTo: cellView.bottomAnchor),
 
 

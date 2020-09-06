@@ -12,13 +12,15 @@
 		F934FC3324FDC2EF00D78C35 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934FC3224FDC2EF00D78C35 /* SceneDelegate.swift */; };
 		F934FC3524FDC2EF00D78C35 /* FundoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934FC3424FDC2EF00D78C35 /* FundoCollectionViewController.swift */; };
 		F934FC3A24FDC2F900D78C35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F934FC3924FDC2F900D78C35 /* Assets.xcassets */; };
-		F98A912724FEC1F30045EC4F /* Fundos.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A912624FEC1F30045EC4F /* Fundos.swift */; };
+		F98A912724FEC1F30045EC4F /* FundosJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A912624FEC1F30045EC4F /* FundosJSON.swift */; };
 		F98A912B24FEC2A70045EC4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F98A912A24FEC2A70045EC4F /* LaunchScreen.storyboard */; };
 		F98A912D24FED8810045EC4F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A912C24FED8810045EC4F /* Network.swift */; };
 		F98A912F24FF125A0045EC4F /* DetailsFundoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A912E24FF125A0045EC4F /* DetailsFundoViewController.swift */; };
 		F98A913124FF18190045EC4F /* FundoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A913024FF18180045EC4F /* FundoViewCell.swift */; };
 		F98A91372501BC810045EC4F /* HistoricoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A91362501BC810045EC4F /* HistoricoViewCell.swift */; };
 		F98A91392501BCDB0045EC4F /* HistoricoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A91382501BCDB0045EC4F /* HistoricoViewController.swift */; };
+		F98A913C250428700045EC4F /* FundoDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A913B250428700045EC4F /* FundoDB.swift */; };
+		F98A913F250555120045EC4F /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A913E250555110045EC4F /* Database.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,13 +32,15 @@
 		F934FC3424FDC2EF00D78C35 /* FundoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundoCollectionViewController.swift; sourceTree = "<group>"; };
 		F934FC3924FDC2F900D78C35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F934FC3E24FDC2F900D78C35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F98A912624FEC1F30045EC4F /* Fundos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fundos.swift; sourceTree = "<group>"; };
+		F98A912624FEC1F30045EC4F /* FundosJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundosJSON.swift; sourceTree = "<group>"; };
 		F98A912A24FEC2A70045EC4F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F98A912C24FED8810045EC4F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		F98A912E24FF125A0045EC4F /* DetailsFundoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsFundoViewController.swift; sourceTree = "<group>"; };
 		F98A913024FF18180045EC4F /* FundoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundoViewCell.swift; sourceTree = "<group>"; };
 		F98A91362501BC810045EC4F /* HistoricoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricoViewCell.swift; sourceTree = "<group>"; };
 		F98A91382501BCDB0045EC4F /* HistoricoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricoViewController.swift; sourceTree = "<group>"; };
+		F98A913B250428700045EC4F /* FundoDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundoDB.swift; sourceTree = "<group>"; };
+		F98A913E250555110045EC4F /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		FAFB73AA0360B1A1B0944258 /* Pods_oramaDesafio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_oramaDesafio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -95,6 +99,8 @@
 				F98A912924FEC2090045EC4F /* Model */,
 				F98A912524FEC1D60045EC4F /* Controller */,
 				F98A913224FF181E0045EC4F /* View */,
+				F98A913A2503EEFE0045EC4F /* Network */,
+				F98A913D250554FE0045EC4F /* Database */,
 				F934FC3924FDC2F900D78C35 /* Assets.xcassets */,
 				F98A912A24FEC2A70045EC4F /* LaunchScreen.storyboard */,
 				F934FC3E24FDC2F900D78C35 /* Info.plist */,
@@ -115,8 +121,8 @@
 		F98A912924FEC2090045EC4F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F98A912624FEC1F30045EC4F /* Fundos.swift */,
-				F98A912C24FED8810045EC4F /* Network.swift */,
+				F98A912624FEC1F30045EC4F /* FundosJSON.swift */,
+				F98A913B250428700045EC4F /* FundoDB.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -128,6 +134,22 @@
 				F98A91362501BC810045EC4F /* HistoricoViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		F98A913A2503EEFE0045EC4F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F98A912C24FED8810045EC4F /* Network.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		F98A913D250554FE0045EC4F /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				F98A913E250555110045EC4F /* Database.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,6 +266,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F98A913C250428700045EC4F /* FundoDB.swift in Sources */,
+				F98A913F250555120045EC4F /* Database.swift in Sources */,
 				F98A913124FF18190045EC4F /* FundoViewCell.swift in Sources */,
 				F98A912D24FED8810045EC4F /* Network.swift in Sources */,
 				F98A91372501BC810045EC4F /* HistoricoViewCell.swift in Sources */,
@@ -251,7 +275,7 @@
 				F934FC3524FDC2EF00D78C35 /* FundoCollectionViewController.swift in Sources */,
 				F98A912F24FF125A0045EC4F /* DetailsFundoViewController.swift in Sources */,
 				F934FC3124FDC2EF00D78C35 /* AppDelegate.swift in Sources */,
-				F98A912724FEC1F30045EC4F /* Fundos.swift in Sources */,
+				F98A912724FEC1F30045EC4F /* FundosJSON.swift in Sources */,
 				F934FC3324FDC2EF00D78C35 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

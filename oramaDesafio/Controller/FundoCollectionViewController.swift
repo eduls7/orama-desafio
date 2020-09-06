@@ -7,14 +7,17 @@
 //
 
 import UIKit
+import RealmSwift
 
-class FundoCollectionViewController: UIViewController  {
-
+class FundoCollectionViewController: UIViewController, FundoInsertDataBase  {
     
     
+    
+
     //MARK: - Properties
     let network = Network()
     var fundos: [Fundo] = []
+    
     
     //MARK: - Properties Layout Interface
     lazy var collectionView: UICollectionView = {
@@ -27,42 +30,28 @@ class FundoCollectionViewController: UIViewController  {
         return collectionView
     }()
     
-
-    
     lazy var historicoButton: UIBarButtonItem = {
-//        let button = UIButton()
-//        let image = UIImage(named: "icon-clock")
-//        button.setImage(image, for: .normal)
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.addTarget(self, action: #selector(buttonHistoricoAction(button:)), for: .touchUpInside)
-//        let buttonBar = UIBarButtonItem(customView: button)
-        let buttonBar = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(buttonHistoricoAction(button:)))
+        let buttonBar = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(buttonHistorico(button:)))
+        
         return buttonBar
     }()
-    
-   
-    
+    let realm = try! Realm()
+    lazy var fundosDB: Results<FundoDB> = { realm.objects(FundoDB.self) }()
     
     //MARK: - Initializers
     override func viewDidLoad() {
         super.viewDidLoad()
-     
         
+        
+        setupUI()
         getFundos()
         
     }
     
-    @objc func buttonHistoricoAction (button: UIButton) {
-        let historicoViewController = HistoricoViewController()
-        
-        historicoViewController.fundos = self.fundos
-        
-        navigationController?.pushViewController(historicoViewController, animated: true)
-    }
     
-
 }
 
+// MARK: - Functions
 extension FundoCollectionViewController {
     
     func getFundos() {
@@ -70,8 +59,48 @@ extension FundoCollectionViewController {
             for index in 0..<6 {
                 self.fundos.append(fundosResponse[index])
                 //print(self.fundos[index].strategyVideo?.thumbnail)
-                self.setupUI()
             }
+            self.collectionView.reloadData()
+        }
+    }
+    
+    @objc func buttonHistorico (button: UIButton) {
+        let historicoViewController = HistoricoViewController()
+        
+        //historicoViewController.fundos = self.fundos
+        
+        navigationController?.pushViewController(historicoViewController, animated: true)
+    }
+    
+    func updateStatusHistoricoButton() {
+        historicoButton.isEnabled = true
+    }
+    
+    func setupColorCells (risk: String, view: UIView) {
+        switch risk {
+            case "2":
+                view.backgroundColor =
+                    UIColor(red: 101/255, green: 241/255, blue: 222/255, alpha: 1)
+                break
+            case "3":
+                view.backgroundColor =
+                UIColor(red: 143/255, green: 237/255, blue: 109/255, alpha: 1)
+                break
+            case "4":
+                view.backgroundColor =
+                UIColor(red: 175/255, green: 244/255, blue: 44/255, alpha: 1)
+                break
+            case "8":
+                view.backgroundColor =
+                UIColor(red: 253/255, green: 187/255, blue: 6/255, alpha: 1)
+                break
+            case "11":
+                view.backgroundColor =
+                UIColor(red: 252/255, green: 5/255, blue: 0/255, alpha: 1)
+                break
+            default:
+                print("Nada")
+                break
         }
     }
 }
@@ -102,7 +131,6 @@ extension FundoCollectionViewController {
             self.navigationItem.title = "Fundos"
             navigationController.navigationBar.barTintColor = UIColor(red: 9/255, green: 155/255, blue: 160/255, alpha: 1)
             self.navigationItem.rightBarButtonItem = historicoButton
-            //self.navigationItem.rightBarButtonItem?.tintColor = .white
         }
         
     }
@@ -113,10 +141,7 @@ extension FundoCollectionViewController {
         let cellWidthConstant: CGFloat = UIScreen.main.bounds.width * 0.95
         let cellHeightConstant: CGFloat = UIScreen.main.bounds.height * 0.15
         
-        layout.sectionInset = UIEdgeInsets(top: 10,
-                                           left: 0,
-                                           bottom: 0,
-                                           right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 0,bottom: 0, right: 0)
         layout.scrollDirection = .vertical
     
         layout.minimumLineSpacing = 15
@@ -138,25 +163,35 @@ extension FundoCollectionViewController: UICollectionViewDataSource, UICollectio
         cell.nameFundoLabel.text = fundos[indexPath.row].simpleName
         cell.nameFundoRiskLabel.text = fundos[indexPath.row].specification.fundRisk.name
         let aplicacaoMinimaFormated = fundos[indexPath.row].operability.applicationMinimum.replacingOccurrences(of: ".", with: ",")
-        cell.aplicacaoMinimaLabel.text = "Aplicação mínima\n R$ \(aplicacaoMinimaFormated)"
+        cell.aplicacaoMinimaLabel.text = "Aplicação mínima\nR$ \(aplicacaoMinimaFormated)"
         
+        let risco = fundos[indexPath.row].specification.fundRisk.name
+        
+        let str = risco.westernArabicNumeralsOnly
+        
+        setupColorCells(risk: str, view: cell.leftColorView)
+                
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailFundoViewController = DetailsFundoViewController()
         
-        let dateFormated = fundos[indexPath.row].initialDate.replacingOccurrences(of: "-", with: "/")
         
-        detailFundoViewController.simpleName.text = fundos[indexPath.row].simpleName
-        detailFundoViewController.fullNameLabel.text = fundos[indexPath.row].fullName
-        detailFundoViewController.initialDataLabel.text = dateFormated
-        detailFundoViewController.descricaoFundoLabel.text = fundos[indexPath.row].fundManager.description
+        detailFundoViewController.fundo = fundos[indexPath.row]
+        detailFundoViewController.delegate = self
         
         navigationController?.pushViewController(detailFundoViewController, animated: true)
         
     }
-    
-    
+}
+
+extension String {
+    var westernArabicNumeralsOnly: String {
+        let pattern = UnicodeScalar("0")..."9"
+        return String(unicodeScalars
+            .compactMap({ pattern ~= $0 ? Character($0) : nil })
+        )
+    }
 }
 
