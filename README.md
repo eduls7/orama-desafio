@@ -6,6 +6,7 @@
 ![Alt text](/Screenshots/DetailScreen2.png)
 ![Alt text](/Screenshots/Alert.png)
 ![Alt text](/Screenshots/Alert2.png)
+![Alt text](/Screenshots/Historico.png)
 
 
 
