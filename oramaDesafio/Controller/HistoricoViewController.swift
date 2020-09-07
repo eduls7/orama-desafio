@@ -103,7 +103,7 @@ extension HistoricoViewController {
             collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0),
             collectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 15),
             collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -15),
-            collectionView.heightAnchor.constraint(equalToConstant: 220)
+            collectionView.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1/1.78)
             
         ])
     }
