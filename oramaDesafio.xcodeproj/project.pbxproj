@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2FF486D50803294D218F7B6A /* Pods_oramaDesafio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFB73AA0360B1A1B0944258 /* Pods_oramaDesafio.framework */; };
 		F934FC3124FDC2EF00D78C35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934FC3024FDC2EF00D78C35 /* AppDelegate.swift */; };
-		F934FC3324FDC2EF00D78C35 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934FC3224FDC2EF00D78C35 /* SceneDelegate.swift */; };
 		F934FC3524FDC2EF00D78C35 /* FundoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F934FC3424FDC2EF00D78C35 /* FundoCollectionViewController.swift */; };
 		F934FC3A24FDC2F900D78C35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F934FC3924FDC2F900D78C35 /* Assets.xcassets */; };
 		F98A912724FEC1F30045EC4F /* FundosJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A912624FEC1F30045EC4F /* FundosJSON.swift */; };
@@ -21,6 +20,7 @@
 		F98A91392501BCDB0045EC4F /* HistoricoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A91382501BCDB0045EC4F /* HistoricoViewController.swift */; };
 		F98A913C250428700045EC4F /* FundoDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A913B250428700045EC4F /* FundoDB.swift */; };
 		F98A913F250555120045EC4F /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A913E250555110045EC4F /* Database.swift */; };
+		F98A91432505EFF40045EC4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A91422505EFF40045EC4F /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +28,6 @@
 		CE812F0E9CBBDA8336F5BFDC /* Pods-oramaDesafio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oramaDesafio.release.xcconfig"; path = "Target Support Files/Pods-oramaDesafio/Pods-oramaDesafio.release.xcconfig"; sourceTree = "<group>"; };
 		F934FC2D24FDC2EF00D78C35 /* oramaDesafio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = oramaDesafio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F934FC3024FDC2EF00D78C35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F934FC3224FDC2EF00D78C35 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F934FC3424FDC2EF00D78C35 /* FundoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundoCollectionViewController.swift; sourceTree = "<group>"; };
 		F934FC3924FDC2F900D78C35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F934FC3E24FDC2F900D78C35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -41,6 +40,7 @@
 		F98A91382501BCDB0045EC4F /* HistoricoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricoViewController.swift; sourceTree = "<group>"; };
 		F98A913B250428700045EC4F /* FundoDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundoDB.swift; sourceTree = "<group>"; };
 		F98A913E250555110045EC4F /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		F98A91422505EFF40045EC4F /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = "../../../../Library/Mobile Documents/com~apple~CloudDocs/.Trash/SceneDelegate.swift"; sourceTree = "<group>"; };
 		FAFB73AA0360B1A1B0944258 /* Pods_oramaDesafio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_oramaDesafio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -95,7 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				F934FC3024FDC2EF00D78C35 /* AppDelegate.swift */,
-				F934FC3224FDC2EF00D78C35 /* SceneDelegate.swift */,
+				F98A91422505EFF40045EC4F /* SceneDelegate.swift */,
 				F98A912924FEC2090045EC4F /* Model */,
 				F98A912524FEC1D60045EC4F /* Controller */,
 				F98A913224FF181E0045EC4F /* View */,
@@ -271,12 +271,12 @@
 				F98A913124FF18190045EC4F /* FundoViewCell.swift in Sources */,
 				F98A912D24FED8810045EC4F /* Network.swift in Sources */,
 				F98A91372501BC810045EC4F /* HistoricoViewCell.swift in Sources */,
+				F98A91432505EFF40045EC4F /* SceneDelegate.swift in Sources */,
 				F98A91392501BCDB0045EC4F /* HistoricoViewController.swift in Sources */,
 				F934FC3524FDC2EF00D78C35 /* FundoCollectionViewController.swift in Sources */,
 				F98A912F24FF125A0045EC4F /* DetailsFundoViewController.swift in Sources */,
 				F934FC3124FDC2EF00D78C35 /* AppDelegate.swift in Sources */,
 				F98A912724FEC1F30045EC4F /* FundosJSON.swift in Sources */,
-				F934FC3324FDC2EF00D78C35 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,7 +405,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8NY9G9332F;
 				INFOPLIST_FILE = oramaDesafio/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -425,7 +425,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8NY9G9332F;
 				INFOPLIST_FILE = oramaDesafio/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -56,12 +56,9 @@ class HistoricoViewController: UIViewController {
                 UIColor(red: 252/255, green: 5/255, blue: 0/255, alpha: 1)
                 break
             default:
-                print("Nada")
                 break
         }
     }
-    
-
 }
 
 extension HistoricoViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -83,13 +80,8 @@ extension HistoricoViewController: UICollectionViewDelegate, UICollectionViewDat
         
         setupColorCells(risk: str, view: cell.bottomColorFundoView)
         
-        
         return cell
     }
-    
-    
-    
-    
 }
 
 extension HistoricoViewController {
@@ -97,13 +89,15 @@ extension HistoricoViewController {
         self.navigationItem.title = "Histórico de Compras"
         self.view.backgroundColor = .white
         self.view.addSubview(collectionView)
-        
+        self.automaticallyAdjustsScrollViewInsets = false
+        let widthScreen = UIScreen.main.bounds.width * 0.60
+       
         NSLayoutConstraint.activate([
                         
-            collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            collectionView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 10),
             collectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 15),
             collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -15),
-            collectionView.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1/1.78)
+            collectionView.heightAnchor.constraint(equalToConstant: widthScreen)
             
         ])
     }
@@ -112,7 +106,6 @@ extension HistoricoViewController {
         let layout = UICollectionViewFlowLayout()
         let cellWidthConstant: CGFloat = UIScreen.main.bounds.width * 0.35
         let cellHeightConstant: CGFloat = UIScreen.main.bounds.width * 0.55
-        
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: cellWidthConstant, height: cellHeightConstant)
     

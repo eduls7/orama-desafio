@@ -116,7 +116,7 @@ extension HistoricoViewCell {
             cellView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             cellView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             
-            vStackView.topAnchor.constraint(equalTo: cellView.topAnchor, constant: 10),
+            vStackView.topAnchor.constraint(equalTo: cellView.topAnchor, constant: 0),
             vStackView.bottomAnchor.constraint(equalTo: cellView.bottomAnchor),
             vStackView.trailingAnchor.constraint(equalTo: cellView.trailingAnchor),
             vStackView.leadingAnchor.constraint(equalTo: cellView.leadingAnchor),

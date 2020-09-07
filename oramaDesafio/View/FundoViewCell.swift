@@ -107,8 +107,7 @@ extension FundoViewCell {
         vStackView.addArrangedSubview(nameFundoRiskLabel)
         vStackView.addArrangedSubview(aplicacaoMinimaLabel)
 
-        
-        
+
         NSLayoutConstraint.activate([
             
             cellView.topAnchor.constraint(equalTo: self.contentView.topAnchor),

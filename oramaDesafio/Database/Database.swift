@@ -11,11 +11,9 @@ import UIKit
 import RealmSwift
 
 
-
 class Database {
     var realm = try! Realm()
     
-
     func getFundos () -> Results<FundoDB> {
         return realm.objects(FundoDB.self)
     }

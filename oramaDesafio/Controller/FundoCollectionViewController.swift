@@ -9,11 +9,8 @@
 import UIKit
 import RealmSwift
 
-class FundoCollectionViewController: UIViewController, FundoInsertDataBase  {
+class FundoCollectionViewController: UIViewController  {
     
-    
-    
-
     //MARK: - Properties
     let network = Network()
     var fundos: [Fundo] = []
@@ -42,13 +39,9 @@ class FundoCollectionViewController: UIViewController, FundoInsertDataBase  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         setupUI()
         getFundos()
-        
     }
-    
-    
 }
 
 // MARK: - Functions
@@ -58,7 +51,6 @@ extension FundoCollectionViewController {
         network.fetchJSON { (fundosResponse) in
             for index in 0..<6 {
                 self.fundos.append(fundosResponse[index])
-                //print(self.fundos[index].strategyVideo?.thumbnail)
             }
             self.collectionView.reloadData()
         }
@@ -66,14 +58,8 @@ extension FundoCollectionViewController {
     
     @objc func buttonHistorico (button: UIButton) {
         let historicoViewController = HistoricoViewController()
-        
-        //historicoViewController.fundos = self.fundos
-        
+
         navigationController?.pushViewController(historicoViewController, animated: true)
-    }
-    
-    func updateStatusHistoricoButton() {
-        historicoButton.isEnabled = true
     }
     
     func setupColorCells (risk: String, view: UIView) {
@@ -99,15 +85,44 @@ extension FundoCollectionViewController {
                 UIColor(red: 252/255, green: 5/255, blue: 0/255, alpha: 1)
                 break
             default:
-                print("Nada")
                 break
         }
     }
 }
 
+
+
+//MARK: - Data Source and Delegate
+extension FundoCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return fundos.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FundoViewCell", for: indexPath) as! FundoViewCell
+        
+        cell.nameFundoLabel.text = fundos[indexPath.row].simpleName
+        cell.nameFundoRiskLabel.text = fundos[indexPath.row].specification.fundRisk.name
+        let aplicacaoMinimaFormated = fundos[indexPath.row].operability.applicationMinimum.replacingOccurrences(of: ".", with: ",")
+        cell.aplicacaoMinimaLabel.text = "Aplicação mínima\nR$ \(aplicacaoMinimaFormated)"
+        
+        let risco = fundos[indexPath.row].specification.fundRisk.name
+        let str = risco.westernArabicNumeralsOnly
+        setupColorCells(risk: str, view: cell.leftColorView)
+                
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailFundoViewController = DetailsFundoViewController()
+        
+        detailFundoViewController.fundo = fundos[indexPath.row]
+        navigationController?.pushViewController(detailFundoViewController, animated: true)
+    }
+}
+
 //MARK: - SetupUI
 extension FundoCollectionViewController {
-    
     
     func setupUI () {
         self.view.backgroundColor = .white
@@ -116,10 +131,10 @@ extension FundoCollectionViewController {
         
         NSLayoutConstraint.activate([
                         
-            collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            collectionView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 0),
             collectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0),
             collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0),
-            collectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
     }
     
@@ -148,41 +163,6 @@ extension FundoCollectionViewController {
         layout.itemSize = CGSize(width: cellWidthConstant, height: cellHeightConstant)
         
         return layout
-    }
-}
-
-//MARK: - Data Source and Delegate
-extension FundoCollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return fundos.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FundoViewCell", for: indexPath) as! FundoViewCell
-        
-        cell.nameFundoLabel.text = fundos[indexPath.row].simpleName
-        cell.nameFundoRiskLabel.text = fundos[indexPath.row].specification.fundRisk.name
-        let aplicacaoMinimaFormated = fundos[indexPath.row].operability.applicationMinimum.replacingOccurrences(of: ".", with: ",")
-        cell.aplicacaoMinimaLabel.text = "Aplicação mínima\nR$ \(aplicacaoMinimaFormated)"
-        
-        let risco = fundos[indexPath.row].specification.fundRisk.name
-        
-        let str = risco.westernArabicNumeralsOnly
-        
-        setupColorCells(risk: str, view: cell.leftColorView)
-                
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailFundoViewController = DetailsFundoViewController()
-        
-        
-        detailFundoViewController.fundo = fundos[indexPath.row]
-        detailFundoViewController.delegate = self
-        
-        navigationController?.pushViewController(detailFundoViewController, animated: true)
-        
     }
 }
 
